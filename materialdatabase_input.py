@@ -14,21 +14,21 @@ def open_database_window():
     top_mainwindow=Toplevel()
     blank_space = " "
     top_mainwindow.title('Material Database')
-    #width_of_window=1700
-    #height_of_window=850
-    #screen_width=top_mainwindow.winfo_screenwidth()
-    #screen_height=top_mainwindow.winfo_screenheight()
-    #x_coordinate= (screen_width/2)-(width_of_window/2)
-    #y_coordinate= (screen_height/2)-(height_of_window/2)
-    #top_mainwindow.geometry("%dx%d+%d+%d" %  (width_of_window,height_of_window,x_coordinate,y_coordinate))
+    width_of_window=1920
+    height_of_window=1080
+    screen_width=top_mainwindow.winfo_screenwidth()
+    screen_height=top_mainwindow.winfo_screenheight()
+    x_coordinate= (screen_width/2)-(width_of_window/2)
+    y_coordinate= (screen_height/2)-(height_of_window/2)
+    top_mainwindow.geometry("%dx%d+%d+%d" %  (width_of_window,height_of_window,x_coordinate,y_coordinate))
 
-    ratio=1
+    #ratio=1
 
-    w, h = top_mainwindow.winfo_screenwidth(), top_mainwindow.winfo_screenheight()
-    top_mainwindow.geometry("%dx%d+0+0" % (ratio*w, ratio*h))
+    #w, h = top_mainwindow.winfo_screenwidth(), top_mainwindow.winfo_screenheight()
+    #top_mainwindow.geometry("%dx%d+0+0" % (ratio*w, ratio*h))
     top_mainwindow.state("zoomed")
 
-    #top_mainwindow.resizable(0,0)
+    top_mainwindow.resizable(0,0)
     #top_mainwindow.attributes('-fullscreen', True)
 
 #=================================================================================================================== 
@@ -74,44 +74,44 @@ def open_database_window():
     databasefromtop=0.1
 
     maindatabase_frame = Frame(top_mainwindow,
-    height=900,
-    width=1800)
+    height=height_of_window,
+    width=width_of_window)
     maindatabase_frame.pack() 
     maindatabase_frame.place(
     relx=0.5,
-    rely=0.52,
+    rely=0.5,
     anchor=CENTER,) 
 
     database_frame = Frame(maindatabase_frame,
-    height=heightdatabase-105,
-    width=Widthdatabase)
+    height=heightdatabase-135,
+    width=47*20+25+140)
     database_frame.pack() 
     database_frame.place(
-    relx=database_x-0.15,
-    rely=0.47,
-    anchor=CENTER) 
-
-    database_input_frame = Frame(maindatabase_frame,
-    height=heightdatabase+80,
-    width=410)
-    database_input_frame.pack() 
-    database_input_frame.place(
-    relx=0.5+0.325,
+    relx=database_x-0.10,
     rely=0.5,
     anchor=CENTER) 
 
-    database_button_frame = Frame(maindatabase_frame,
-    height=40,
-    width=Widthdatabase)
-    database_button_frame.pack() 
-    database_button_frame.place(
-    relx=database_x-0.15,
-    rely=0.04,
+    database_input_frame = Frame(maindatabase_frame,
+    height=heightdatabase,
+    width=380)
+    database_input_frame.pack() 
+    database_input_frame.place(
+    relx=0.5+0.3,
+    rely=0.52,
     anchor=CENTER) 
 
-    btnupdate = Button(database_button_frame, text='Update', height=1, width=10)
+    #database_button_frame = Frame(maindatabase_frame,
+    #height=40,
+    #width=Widthdatabase)
+    #database_button_frame.pack() 
+    #database_button_frame.place(
+    #relx=database_x-0.15,
+    #rely=0.1,
+    #anchor=CENTER) 
+
+    #btnupdate = Button(database_button_frame, text='Update', height=1, width=10)
     #btnadd = Button(database_button_frame, text='Add', height=1, width=10)
-    btnremove = Button(database_button_frame, text='Remove', height=1, width=10) 
+    #btnremove = Button(database_button_frame, text='Remove', height=1, width=10) 
 
     #ttkcolumn=(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)     
     ttkcolumn=(
@@ -143,7 +143,7 @@ def open_database_window():
     trv.pack()
 
     trv.column("ID", width=  25            ,stretch=NO)
-    trv.column("Material", width=  250           ,stretch=NO)
+    trv.column("Material", width=  135           ,stretch=NO)
     trv.column("CRITERIA_1", width=  criteria_width,stretch=NO, anchor=tk.CENTER)
     trv.column("CRITERIA_2", width=  criteria_width,stretch=NO, anchor=tk.CENTER)
     trv.column("CRITERIA_3", width=  criteria_width,stretch=NO, anchor=tk.CENTER)
@@ -213,12 +213,12 @@ def open_database_window():
 
         conn.commit()
       
-    gapbtn=0.08
-    btnupdate.pack() 
-    btnupdate.place(relx=0.88+gapbtn*0,rely=0.5, anchor=CENTER)  
-    btnremove.pack()  
-    btnremove.place(relx=0.88+gapbtn*1,rely=0.5, anchor=CENTER)           
-    btnremove.configure(command=deletefromdatabase)
+    #gapbtn=0.08
+    #btnupdate.pack() 
+    #btnupdate.place(relx=0.88+gapbtn*0,rely=0.5, anchor=CENTER)  
+    #btnremove.pack()  
+    #btnremove.place(relx=0.88+gapbtn*1,rely=0.5, anchor=CENTER)           
+    #btnremove.configure(command=deletefromdatabase)
 
 
     scrollbarY_MDbox = Scrollbar(database_frame , orient=VERTICAL)        
@@ -739,7 +739,7 @@ def open_database_window():
 
     Entry_material_name     =Entry(database_input_frame) 
     Entry_material_name .pack()
-    Entry_material_name.place(relx=0.025+f_gap,rely=input_y_from_top-0.005,width=250, anchor=W)
+    Entry_material_name.place(relx=0.025+f_gap,rely=input_y_from_top-0.005,width=220, anchor=W)
 
 
     input_material_name.place(relx=0.025,rely=input_y_from_top-0.005,          anchor=W)
@@ -932,8 +932,12 @@ def open_database_window():
     
         conn.commit()
 
-    btnadd = Button(database_input_frame, text='Add', height=1, width=10)
+    btnadd = Button(database_input_frame, text='Add', height=1, width=8)
     btnadd.configure(command=addintodatabase)
     btnadd.pack()
     btnadd.place(relx=0.825,rely=input_y_from_top+gap_input_y*21.5 , anchor=CENTER) 
-    
+
+    btnremove = Button(database_input_frame, text='Remove', height=1, width=8) 
+    btnremove.configure(command=deletefromdatabase)
+    btnremove.pack()
+    btnremove.place(relx=0.6,rely=input_y_from_top+gap_input_y*21.5 , anchor=CENTER)     

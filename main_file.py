@@ -28,58 +28,60 @@ class app:
         self.mainwindow = mainwindow
         blank_space = " "
         self.mainwindow.title('Material Selection KBS')
-        #width_of_window=1366
-        #height_of_window=768
-        #screen_width=mainwindow.winfo_screenwidth()
-        #screen_height=mainwindow.winfo_screenheight()
-        #x_coordinate= (screen_width/2)-(width_of_window/2)
-        #y_coordinate= (screen_height/2)-(height_of_window/2)
-        #self.mainwindow.geometry("%dx%d+%d+%d" %  (width_of_window,height_of_window,x_coordinate,y_coordinate))
+        width_of_window=1920
+        height_of_window=1080
+        screen_width=mainwindow.winfo_screenwidth()
+        screen_height=mainwindow.winfo_screenheight()
+        x_coordinate= (screen_width/2)-(width_of_window/2)
+        y_coordinate= (screen_height/2)-(height_of_window/2)         
+        self.mainwindow.geometry("%dx%d+%d+%d" %  (width_of_window,height_of_window,x_coordinate,y_coordinate)) 
  
-        w, h = self.mainwindow.winfo_screenwidth(), self.mainwindow.winfo_screenheight()
-        self.mainwindow.geometry("%dx%d+0+0" % (w, h))
+        #w, h = self.mainwindow.winfo_screenwidth(), self.mainwindow.winfo_screenheight()
+        #self.mainwindow.geometry("%dx%d+0+0" % (w, h))
         self.mainwindow.state("zoomed")
 
         self.mainwindow.resizable(0,0)
         #self.mainwindow.attributes('-fullscreen', True)
 
         self.main_frame_tab1 = Frame(self.mainwindow, 
-        height=950,
-        width=1800)
+        height=height_of_window,
+        width=width_of_window)
         self.main_frame_tab1.pack() 
         self.main_frame_tab1.place(
         relx=0.5,
-        rely=0.47,
+        rely=0.5,
         anchor=CENTER) 
 
         self.wdtitle1=Label(self.main_frame_tab1, text="Material Selection KBS", font=("Helvetica", 16, "bold"))
         self.wdtitle1.pack()
         self.wdtitle1.place(relx=0.5,rely=0.45, anchor=CENTER)
 
+        btnnextX=0.865
+        btnnextY=0.83
+
         self.btnnext1 = Button(self.main_frame_tab1, text='Next', height=1, width=10)
         self.btnnext1.pack()
-        self.btnnext1.place(relx=0.953,rely=0.97, anchor=CENTER)
+        self.btnnext1.place(relx=btnnextX,rely=btnnextY, anchor=CENTER)
 
 #===================================================================================================================
         def tab_2():
  
 
-
             def tab_3(): 
 
                 self.main_frame_tab3 = Frame(self.mainwindow, 
-                height=950,
-                width=1800)
+                height=height_of_window,
+                width=width_of_window)
                 self.main_frame_tab3.pack() 
                 self.main_frame_tab3.place(
                 relx=0.5,
-                rely=0.47,
+                rely=0.5,
                 anchor=CENTER) 
 
-                button_database = Button(self.main_frame_tab3, text='Database', width=12, font=('bold',10),padx=10)
+                button_database = Button(self.main_frame_tab3, text='Database', width=10)
                 button_database.configure(command=open_database_window) 
                 button_database.pack()
-                button_database.place(relx=0.95,rely=0.02, anchor=CENTER)
+                button_database.place(relx=btnnextX,rely=0.17, anchor=CENTER)
 
                 # initialize tab_3
 
@@ -694,8 +696,8 @@ class app:
                     self.figure_fuzzy_DMs_Weight_frame = LabelFrame(self.main_frame_tab3)
                     self.figure_fuzzy_DMs_Weight_frame.pack() 
                     self.figure_fuzzy_DMs_Weight_frame.place(
-                    relx=0.25,
-                    rely=0.47,
+                    relx=0.33,
+                    rely=0.5,
                     #rely= 0.35,
                     anchor=CENTER) 
 
@@ -831,21 +833,21 @@ class app:
                     self.main_frame_tab3.place_forget()     
 
                     self.main_frame_tab4 = Frame(self.mainwindow, 
-                    height=950,
-                    width=1800)
+                    height=height_of_window,
+                    width=width_of_window)
                     self.main_frame_tab4.pack() 
                     self.main_frame_tab4.place(
                     relx=0.5,
-                    rely=0.47,
+                    rely=0.5,
                     anchor=CENTER) 
 
                     self.btnnext4 = Button(self.main_frame_tab4, text='Next', height=1, width=10)
                     self.btnback4 = Button(self.main_frame_tab4, text='Back', height=1, width=10)
 
                     self.btnnext4.pack()            
-                    self.btnnext4.place(relx=0.953,rely=0.97, anchor=CENTER)  
+                    self.btnnext4.place(relx=btnnextX,rely=btnnextY, anchor=CENTER)  
                     self.btnback4.pack()            
-                    self.btnback4.place(relx=0.9,rely=0.97, anchor=CENTER)                       
+                    self.btnback4.place(relx=btnnextX-0.05,rely=btnnextY, anchor=CENTER)                       
 
                     if num_val_sublv2 == 0 :
                         print('no data for evaluation,')  
@@ -911,11 +913,11 @@ class app:
                 self.btnback3 = Button(self.main_frame_tab3, text='Back', height=1, width=10)
 
                 self.btnnext3.pack()            
-                self.btnnext3.place(relx=0.953,rely=0.97, anchor=CENTER)            
+                self.btnnext3.place(relx=btnnextX,rely=btnnextY, anchor=CENTER)            
                 self.btnnext3.configure(command=tab_4)            
 
                 self.btnback3.pack()            
-                self.btnback3.place(relx=0.9,rely=0.97, anchor=CENTER)            
+                self.btnback3.place(relx=btnnextX-0.05,rely=btnnextY, anchor=CENTER)            
                 self.btnback3.configure(command=back_2)
 
             location_x_tab2=0.03
@@ -924,15 +926,15 @@ class app:
             location_x2_tab2=0.15 # to delete
             location_y2_tab2_gap=0.043 #
 
-            heightbox_tab2=830
+            heightbox_tab2=700
 
             self.main_frame_tab2 = Frame(self.mainwindow, 
-            height=950,
-            width=1800)
+            height=height_of_window,
+            width=width_of_window)
             self.main_frame_tab2.pack() 
             self.main_frame_tab2.place(
             relx=0.5,
-            rely=0.47,
+            rely=0.5,
             anchor=CENTER) 
 
             self.infodetail_frame = LabelFrame(self.main_frame_tab2, 
@@ -942,41 +944,41 @@ class app:
             width=600)
             self.infodetail_frame.pack() 
             self.infodetail_frame.place(
-            relx=0.19,
-            rely=0.47,
+            relx=0.27,
+            rely=0.48,
             anchor=CENTER) 
 
             self.criteriaweighting_frame = LabelFrame(self.main_frame_tab2, 
             text=("Criteria Weighting"),
             font=("Helvetica", 10, "italic"),
             height=heightbox_tab2,
-            width=650)
+            width=530)
             self.criteriaweighting_frame.pack() 
             self.criteriaweighting_frame.place(
-            relx=0.56,
-            rely=0.47,
+            relx=0.577,
+            rely=0.48,
             anchor=CENTER)            
 
             self.criteria_optimization = LabelFrame(self.main_frame_tab2, 
             text=("Criteria Optimization"),
             font=("Helvetica", 10, "italic"),
             height=heightbox_tab2,
-            width=380)
+            width=300)
             self.criteria_optimization.pack() 
             self.criteria_optimization.place(
-            relx=0.87,
-            rely=0.47,
+            relx=0.807,
+            rely=0.48,
             anchor=CENTER)   
 
             self.btnnext2 = Button(self.main_frame_tab2, text='Next', height=1, width=10)
             self.btnback2 = Button(self.main_frame_tab2, text='Back', height=1, width=10)
 
             self.btnnext2.pack()            
-            self.btnnext2.place(relx=0.953,rely=0.97, anchor=CENTER)            
+            self.btnnext2.place(relx=btnnextX,rely=btnnextY, anchor=CENTER)            
             self.btnnext2.configure(command=tab_3)            
 
             self.btnback2.pack()            
-            self.btnback2.place(relx=0.90,rely=0.97, anchor=CENTER)            
+            self.btnback2.place(relx=btnnextX-0.05,rely=btnnextY, anchor=CENTER)            
             #self.btnback2.configure(command=back_1)
  
             self.wdtitle1.place_forget()
@@ -1199,13 +1201,13 @@ class app:
             self.C_Listbox2.pack()  
             self.C_Listbox2.place(relx=0.53,rely=0.35,anchor=NW)           
 
-            gap_x=0.125  ####
-            gap_x_from_border=0.35 ###     
+            gap_x=0.12  ####
+            gap_x_from_border=0.33 ###     
 
             label_criteria_tab2_y=0.038
             label_criteria_tab2_y_gap=0.043
 
-            label_criteria_tab2_x= 0.025 
+            label_criteria_tab2_x= 0.05 
             dmbox_criteria_tab2_y=0 
             gapboxdm_fromtop=label_criteria_tab2_y
             gap_y_dmweight=label_criteria_tab2_y_gap
