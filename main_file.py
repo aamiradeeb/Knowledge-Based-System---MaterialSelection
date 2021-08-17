@@ -234,7 +234,7 @@ class app:
                 self.figure_fuzzy_DMs_Weight_frame.pack() 
                 self.figure_fuzzy_DMs_Weight_frame.place(
                 relx=0.5,
-                rely=0.45,
+                rely=0.48,
                 #rely= 0.35,
                 anchor=CENTER) 
 
@@ -1062,7 +1062,7 @@ class app:
                     self.figure_chart_ranking_frame.pack() 
                     self.figure_chart_ranking_frame.place(
                     relx=0.5,
-                    rely=0.45,
+                    rely=0.48,
                     #rely= 0.35,
                     anchor=CENTER) 
 
