@@ -66,7 +66,159 @@ class app:
 #===================================================================================================================
         def tab_2():
  
+            location_x_tab2=0.03
+            location_y2_tab2=0.1
 
+            location_x2_tab2=0.15 # to delete
+            location_y2_tab2_gap=0.043 #
+
+            heightbox_tab2=700
+
+            self.main_frame_tab2 = Frame(self.mainwindow, 
+            height=height_of_window,
+            width=width_of_window)
+            self.main_frame_tab2.pack() 
+            self.main_frame_tab2.place(
+            relx=0.5,
+            rely=0.5,
+            anchor=CENTER) 
+
+            self.infodetail_frame = LabelFrame(self.main_frame_tab2, 
+            text=("Info"),
+            font=("Helvetica", 10, "italic"),
+            height=heightbox_tab2,
+            width=600)
+            self.infodetail_frame.pack() 
+            self.infodetail_frame.place(
+            relx=0.27,
+            rely=0.48,
+            anchor=CENTER) 
+
+            self.criteriaweighting_frame = LabelFrame(self.main_frame_tab2, 
+            text=("Criteria Weighting"),
+            font=("Helvetica", 10, "italic"),
+            height=heightbox_tab2,
+            width=530)
+            self.criteriaweighting_frame.pack() 
+            self.criteriaweighting_frame.place(
+            relx=0.577,
+            rely=0.48,
+            anchor=CENTER)            
+
+            self.criteria_optimization = LabelFrame(self.main_frame_tab2, 
+            text=("Criteria Optimization"),
+            font=("Helvetica", 10, "italic"),
+            height=heightbox_tab2,
+            width=300)
+            self.criteria_optimization.pack() 
+            self.criteria_optimization.place(
+            relx=0.807,
+            rely=0.48,
+            anchor=CENTER)   
+
+            self.button_database = Button(self.main_frame_tab2, text='Database', width=10)
+            self.button_database.configure(command=open_database_window) 
+            self.button_database.pack()
+            self.button_database.place(relx=btnnextX,rely=0.138, anchor=CENTER)
+
+            self.wdtitle1.place_forget()
+            self.btnnext1.place_forget()
+
+            self.nameofproject1=Label(self.infodetail_frame, text="Project name", font=("Helvetica", 10, 'bold'))
+
+            def handle_focus_in(_):
+                self.nameofproject2.delete(0, tk.END)
+                self.nameofproject2.config(fg='black') 
+
+            def handle_enter(txt):
+                print(self.nameofproject2.get())
+
+            self.nameofproject2=Entry(self.infodetail_frame,width=58,bd=1) 
+
+            self.nameofproject2.insert(0,"Enter Project name")
+
+            self.nameofproject2.bind("<FocusIn>", handle_focus_in) 
+            self.nameofproject2.bind("<Return>", handle_enter)
+
+            self.typeofproject1=Label(self.infodetail_frame, text="Type of project", font=("Helvetica", 10, 'bold' ))
+
+            Typeofproject_var=IntVar()
+            Typeofproject_var.set(3)
+            self.r1=Radiobutton(self.infodetail_frame, text="Performance", variable=Typeofproject_var,value=1, tristatevalue=0)
+            self.r2=Radiobutton(self.infodetail_frame, text="Cost", variable=Typeofproject_var,value=2, tristatevalue=0)
+            self.r3=Radiobutton(self.infodetail_frame, text="Customise", variable=Typeofproject_var,value=3, tristatevalue=0)
+
+            
+            self.dm_q1=Label(self.infodetail_frame, text="Decision makers", font=("Helvetica", 10, 'bold' ))
+            
+            self.dm_selection = ttk.Combobox(self.infodetail_frame, values=[1,2,3,4,5], width = 11, state='readonly')
+            self.dm_selection.set(1)
+
+            self.Typeofevaluation=Label(self.infodetail_frame, text="Type of evaluation", font=("Helvetica", 10, 'bold' ))
+            Typeofevaluation_Var=IntVar()
+            Typeofevaluation_Var.set(3)
+            self.r4=Radiobutton(self.infodetail_frame, text="Quantitative", variable=Typeofevaluation_Var,value=1, tristatevalue=0)
+            self.r5=Radiobutton(self.infodetail_frame, text="Qualitative", variable=Typeofevaluation_Var,value=2, tristatevalue=0)            
+            self.r6=Radiobutton(self.infodetail_frame, text="Combination", variable=Typeofevaluation_Var,value=3, tristatevalue=0)
+
+            self.criteria_label_listbox_info=Label(self.infodetail_frame, text="Criteria", font=("Helvetica", 10, 'bold' )) 
+
+            item_infodetail_xmove=0.053
+            item_infodetail_ymove=0.05
+            item_infodetail_xmove_gap=0.25
+            item_infodetail_ymove_gap=0.07
+
+
+            self.nameofproject1.pack()
+            self.nameofproject1.place(relx=item_infodetail_xmove,rely=item_infodetail_ymove, anchor=NW)
+
+            self.nameofproject2.pack()
+            self.nameofproject2.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*1.2,rely=item_infodetail_ymove, anchor=NW)
+
+            self.typeofproject1.pack()
+            self.typeofproject1.place(relx=item_infodetail_xmove,rely=item_infodetail_ymove+item_infodetail_ymove_gap*1, anchor=NW)
+             
+            self.r1.pack()
+            self.r2.pack()
+            self.r3.pack() 
+            self.r1.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*1.2,rely=item_infodetail_ymove+item_infodetail_ymove_gap*1, anchor=NW)
+            self.r2.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*2.1,rely=item_infodetail_ymove+item_infodetail_ymove_gap*1, anchor=NW)
+            self.r3.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*2.8,rely=item_infodetail_ymove+item_infodetail_ymove_gap*1, anchor=NW)
+            
+            self.dm_q1.pack()
+            self.dm_q1.place(relx=item_infodetail_xmove,rely=item_infodetail_ymove+item_infodetail_ymove_gap*2, anchor=NW)
+
+            self.dm_selection.pack()
+            self.dm_selection.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*1.2,rely=item_infodetail_ymove+item_infodetail_ymove_gap*2, anchor=NW)
+            self.dm_selection.current()
+
+            self.Typeofevaluation.pack()
+            self.Typeofevaluation.place(relx=item_infodetail_xmove,rely=item_infodetail_ymove+item_infodetail_ymove_gap*3, anchor=NW)
+
+            self.r4.pack()
+            self.r5.pack()
+            self.r6.pack()
+            self.r4.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*1.2,rely=item_infodetail_ymove+item_infodetail_ymove_gap*3, anchor=NW)
+            self.r5.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*2.1,rely=item_infodetail_ymove+item_infodetail_ymove_gap*3, anchor=NW)
+            self.r6.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*2.8,rely=item_infodetail_ymove+item_infodetail_ymove_gap*3, anchor=NW)
+
+            self.criteria_label_listbox_info.pack()
+            self.criteria_label_listbox_info.place(relx=item_infodetail_xmove,rely=item_infodetail_ymove+item_infodetail_ymove_gap*4, anchor=NW)
+
+            height_listbox=19
+            self.C_Listbox=Listbox(self.infodetail_frame,height=height_listbox , width = 28, selectmode=MULTIPLE,exportselection=False)
+            self.C_Listbox.insert(1,'Physical Properties')
+            self.C_Listbox.insert(2,'Mechanical Properties')
+            self.C_Listbox.insert(3,'Chemical Properties')
+            self.C_Listbox.insert(4,'Manufacturing Processes')
+            self.C_Listbox.insert(5,'Operating Condition')
+            self.C_Listbox.insert(6,'Recyclability')
+            self.C_Listbox.insert(7,'Cost')                  
+            self.C_Listbox.insert(10,'Quality')
+            self.C_Listbox.insert(11,'SHE Risk')
+            self.C_Listbox.pack()      
+
+        
             def tab_3(): 
 
                 self.main_frame_tab3 = Frame(self.mainwindow, 
@@ -78,15 +230,17 @@ class app:
                 rely=0.5,
                 anchor=CENTER) 
 
-                button_database = Button(self.main_frame_tab3, text='Database', width=10)
-                button_database.configure(command=open_database_window) 
-                button_database.pack()
-                button_database.place(relx=btnnextX,rely=0.17, anchor=CENTER)
+                self.figure_fuzzy_DMs_Weight_frame = LabelFrame(self.main_frame_tab3)
+                self.figure_fuzzy_DMs_Weight_frame.pack() 
+                self.figure_fuzzy_DMs_Weight_frame.place(
+                relx=0.5,
+                rely=0.45,
+                #rely= 0.35,
+                anchor=CENTER) 
 
                 # initialize tab_3
 
                 # name of project
-
 
                 print('Project Name         :',self.nameofproject2.get())  
 
@@ -97,7 +251,6 @@ class app:
                     print('Type of Project      : Cost')
                 if Typeofproject_var.get() == 3:
                     print('Type of Project      : Customise')    
-
 
                 # number of dm slected
                 print('Number of DM         :',self.dm_selection.get())  
@@ -140,8 +293,7 @@ class app:
                 #Projectnamefile=self.nameofproject2.get()
                 #pdf.output(filename+Projectnamefile+str(timename)+'.pdf')
 
-#===================================================================================================================
-#fuzzification
+                #fuzzification
                 #fuzzy number 9-Saaty scale
 
                 fz1= (0.001,0.1,0.2) # Extremely Low
@@ -264,6 +416,43 @@ class app:
 
                 dm_for_averagedm_cal=int(dm_number)
 
+                c1_optimise_get =c1_optimise.get()
+                c2_optimise_get =c2_optimise.get()
+                c3_optimise_get =c3_optimise.get()
+                c4_optimise_get =c4_optimise.get()
+                c5_optimise_get =c5_optimise.get()
+                c6_optimise_get =c6_optimise.get()
+                c7_optimise_get =c7_optimise.get()
+                c8_optimise_get =c8_optimise.get()
+                c9_optimise_get =c9_optimise.get()
+                c10_optimise_get=c10_optimise.get()
+                c11_optimise_get=c11_optimise.get()
+                c12_optimise_get=c12_optimise.get()
+                c13_optimise_get=c13_optimise.get()
+                c14_optimise_get=c14_optimise.get()
+                c15_optimise_get=c15_optimise.get()
+                c16_optimise_get=c16_optimise.get()
+                c17_optimise_get=c17_optimise.get()
+                c18_optimise_get=c18_optimise.get()
+                c19_optimise_get=c19_optimise.get()
+                c20_optimise_get=c20_optimise.get() 
+
+                c_optimise_setdata = []
+                c_optimise_setdata_list =[]
+                c_optimise_setdata_list=matrix_optimise_fuzzy_dm_list(c_optimise_setdata,c_optimise_setdata_list,num_val_sublv2,rowdatabase, 
+                c1_optimise_get ,c2_optimise_get ,c3_optimise_get ,c4_optimise_get ,c5_optimise_get ,
+                c6_optimise_get ,c7_optimise_get ,c8_optimise_get ,c9_optimise_get ,c10_optimise_get,
+                c11_optimise_get,c12_optimise_get,c13_optimise_get,c14_optimise_get,c15_optimise_get,
+                c16_optimise_get,c17_optimise_get,c18_optimise_get,c19_optimise_get,c20_optimise_get)
+
+                matrix_array_optimisation_C=function_matrix_array_optimisation_C(num_val_sublv2,c1_optimise_get ,c2_optimise_get ,c3_optimise_get ,c4_optimise_get 
+                ,c5_optimise_get ,c6_optimise_get ,c7_optimise_get ,c8_optimise_get ,c9_optimise_get ,c10_optimise_get,c11_optimise_get,
+                c12_optimise_get,c13_optimise_get,c14_optimise_get,c15_optimise_get,c16_optimise_get,c17_optimise_get,c18_optimise_get,c19_optimise_get,c20_optimise_get) 
+
+                df_alternative = df['Material'].to_numpy()   
+                average_ranking=[]                 
+
+
                 if Typeofevaluation_Var.get() == 1:
 
                     quantitative_value_dm_c1 =((int(dm1_c1_get )+ int(dm2_c1_get )+ int(dm3_c1_get )+ int(dm4_c1_get )+ int(dm5_c1_get ))/10)/dm_for_averagedm_cal
@@ -295,6 +484,72 @@ class app:
                     print(" ")
                     print('Ave. DMs weight:')
                     print(weight_matrix_dm)
+                    print('List Optimisation:')
+                    print(c_optimise_setdata_list)
+                    print('')
+                    print('TOPSIS and VIKOR module initatiated')
+                    print('')
+                    TOPSIS_RANK=TOPSIS(num_val_sublv2,weight_matrix_dm,matrix_array_optimisation_C)
+                    print("TOPSIS RANK  :",TOPSIS_RANK) 
+                    VIKOR_RANK=VIKOR(num_val_sublv2,weight_matrix_dm,matrix_array_optimisation_C)
+                    print("VIKOR RANK   :",VIKOR_RANK) 
+                    values1=TOPSIS_RANK
+                    values2=VIKOR_RANK
+                    for num1, num2 in zip(values1, values2):
+                        average_ranking.append((num1+num2)/2)         
+                    rankAVERAGE= [sorted(average_ranking,reverse=False).index(x)+1 for x in average_ranking]
+                    print("Average RANK :",rankAVERAGE) 
+                    print("")
+                    rho_value=rho(values1, values2)
+                    tau_value=tau(values1, values2)
+                    print("rho value  :",rho_value) 
+                    print("tau value  :",tau_value)         
+
+                    def add_value_labels(ax, spacing=5):   
+                        for rect in ax.patches: 
+                            y_value = rect.get_height()
+                            x_value = rect.get_x() + rect.get_width() / 2 
+                            space = spacing 
+                            va = 'bottom' 
+                            if y_value < 0:
+                                # Invert space to place label below
+                                space *= -1
+                                # Vertically align label at top
+                                va = 'top' 
+                            label = "{:}".format(y_value)
+                            # Create annotation
+                            ax.annotate(
+                                label,                      # Use `label` as label
+                                (x_value, y_value),         # Place label at end of the bar
+                                xytext=(0, space),
+                                fontsize=8,          # Vertically shift label by `space`
+                                textcoords="offset points", # Interpret `xytext` as offset in points
+                                ha='center',                # Horizontally center label
+                                va=va)                      # Vertically align label differently for
+                                                            # positive and negative values.        
+
+
+                    data_rank = {'Material': df_alternative,'Ranking TOPSIS':values1,'Ranking VIKOR':values2, 'Average ranking':rankAVERAGE}  
+                    data_rank=DataFrame(data_rank,columns=['Material','Ranking TOPSIS','Ranking VIKOR', 'Average ranking']) 
+                    figureranking =  plt.Figure(edgecolor="#04253a",figsize=(10,5), dpi=140,facecolor="#e5e5e5")                                 
+                    ax1 = figureranking.add_subplot(111)                            
+                    bar1 = FigureCanvasTkAgg(figureranking, self.figure_fuzzy_DMs_Weight_frame)
+                    bar1.get_tk_widget().pack() 
+                    data_rank.plot(kind='bar', legend=True, ax=ax1,width=0.45,color=['slategrey', 'royalblue', 'black'])
+                    ax1.set_title('Material Ranking', fontsize=8,fontweight="bold", y=1.0, pad=15) 
+                    ax1.legend(fontsize=5)
+                    ax1.set_xlabel('Material',fontsize=6)
+                    ax1.set_ylabel('Ranking',fontsize=6)
+                    ax1.tick_params(axis='both', which='major', labelsize=6)
+                    print("") 
+                    print(data_rank)                            
+                    yLIMIT=len(df['Material'])
+                    ax1.set_ylim([0, yLIMIT+3])
+                    ax1.set_xticklabels(df_alternative, rotation=25, ha='right')                       
+                    add_value_labels(ax1) 
+
+
+
 
                 if Typeofevaluation_Var.get() > 1:
 
@@ -529,7 +784,6 @@ class app:
                     matrix_value_fuzzy_dm_c19=np.array((matrix_value_fuzzy_dm1_c19+matrix_value_fuzzy_dm2_c19+matrix_value_fuzzy_dm3_c19+matrix_value_fuzzy_dm4_c19+matrix_value_fuzzy_dm5_c19)/dm_for_averagedm_cal)
                     matrix_value_fuzzy_dm_c20=np.array((matrix_value_fuzzy_dm1_c20+matrix_value_fuzzy_dm2_c20+matrix_value_fuzzy_dm3_c20+matrix_value_fuzzy_dm4_c20+matrix_value_fuzzy_dm5_c20)/dm_for_averagedm_cal)   
 
-
                     ave_dmqualitative = []
                     ave_dmqualitative_list =[] 
                     ave_dmqualitative_list =matrix_value_fuzzy_dm_list(ave_dmqualitative,ave_dmqualitative_list,num_val_sublv2,rowdatabase,
@@ -538,7 +792,6 @@ class app:
                     matrix_value_fuzzy_dm_c11,matrix_value_fuzzy_dm_c12,matrix_value_fuzzy_dm_c13,matrix_value_fuzzy_dm_c14,matrix_value_fuzzy_dm_c15,
                     matrix_value_fuzzy_dm_c16,matrix_value_fuzzy_dm_c17,matrix_value_fuzzy_dm_c18,matrix_value_fuzzy_dm_c19,matrix_value_fuzzy_dm_c20) 
                     
-
                     # create temporary matrix at database for dm values.
 
                     weight_matrix_dm = Matrix_quantitative_DM(num_val_sublv2,matrix_value_fuzzy_dm_c1 ,matrix_value_fuzzy_dm_c2 ,matrix_value_fuzzy_dm_c3 ,matrix_value_fuzzy_dm_c4 ,matrix_value_fuzzy_dm_c5 ,
@@ -548,7 +801,8 @@ class app:
                     print(" ")
                     print('Ave. DMs Fuzzy weight:')
                     print(ave_dmqualitative_list)
- 
+
+
                     by=[0,1,0] 
                     data1 = {'Y': matrix_value_fuzzy_dm_c1 ,'average_fuzzyweight_DMs_C1': by }                
                     data2 = {'Y': matrix_value_fuzzy_dm_c2 ,'average_fuzzyweight_DMs_C2': by }
@@ -693,17 +947,10 @@ class app:
                       df20  = df20[['Y','average_fuzzyweight_DMs_C20']].groupby('Y').sum()
                       df20.plot  (kind='line', legend=True, ax=ax2, color='cadetblue',marker='3',markersize=markersize_plot, fontsize=fontsize_plot)
 
-                    self.figure_fuzzy_DMs_Weight_frame = LabelFrame(self.main_frame_tab3)
-                    self.figure_fuzzy_DMs_Weight_frame.pack() 
-                    self.figure_fuzzy_DMs_Weight_frame.place(
-                    relx=0.33,
-                    rely=0.5,
-                    #rely= 0.35,
-                    anchor=CENTER) 
 
                     if num_val_sublv2 >  0 : 
 
-                        figure_fuzzy_DMs_Weight_frame = plt.Figure(edgecolor="#04253a",figsize=(7,5), dpi=100,facecolor="#e5e5e5")
+                        figure_fuzzy_DMs_Weight_frame = plt.Figure(edgecolor="#04253a",figsize=(10,5), dpi=140,facecolor="#e5e5e5")
                         ax2 = figure_fuzzy_DMs_Weight_frame.add_subplot(111)
                         line2 = FigureCanvasTkAgg(figure_fuzzy_DMs_Weight_frame, self.figure_fuzzy_DMs_Weight_frame)
                         line2.get_tk_widget().pack() #fill=tk.BOTH)d
@@ -790,46 +1037,16 @@ class app:
                         plot_ave_f_dms_C20()
                         chart_fuzzzy_dm()
 
-                c1_optimise_get =c1_optimise.get()
-                c2_optimise_get =c2_optimise.get()
-                c3_optimise_get =c3_optimise.get()
-                c4_optimise_get =c4_optimise.get()
-                c5_optimise_get =c5_optimise.get()
-                c6_optimise_get =c6_optimise.get()
-                c7_optimise_get =c7_optimise.get()
-                c8_optimise_get =c8_optimise.get()
-                c9_optimise_get =c9_optimise.get()
-                c10_optimise_get=c10_optimise.get()
-                c11_optimise_get=c11_optimise.get()
-                c12_optimise_get=c12_optimise.get()
-                c13_optimise_get=c13_optimise.get()
-                c14_optimise_get=c14_optimise.get()
-                c15_optimise_get=c15_optimise.get()
-                c16_optimise_get=c16_optimise.get()
-                c17_optimise_get=c17_optimise.get()
-                c18_optimise_get=c18_optimise.get()
-                c19_optimise_get=c19_optimise.get()
-                c20_optimise_get=c20_optimise.get() 
+                    print('List Optimisation:')
+                    print(c_optimise_setdata_list)
 
-                c_optimise_setdata = []
-                c_optimise_setdata_list =[]
-                c_optimise_setdata_list=matrix_optimise_fuzzy_dm_list(c_optimise_setdata,c_optimise_setdata_list,num_val_sublv2,rowdatabase, 
-                c1_optimise_get ,c2_optimise_get ,c3_optimise_get ,c4_optimise_get ,c5_optimise_get ,
-                c6_optimise_get ,c7_optimise_get ,c8_optimise_get ,c9_optimise_get ,c10_optimise_get,
-                c11_optimise_get,c12_optimise_get,c13_optimise_get,c14_optimise_get,c15_optimise_get,
-                c16_optimise_get,c17_optimise_get,c18_optimise_get,c19_optimise_get,c20_optimise_get)
+#===================================================================================================================
 
-                matrix_array_optimisation_C=function_matrix_array_optimisation_C(num_val_sublv2,c1_optimise_get ,c2_optimise_get ,c3_optimise_get ,c4_optimise_get 
-                ,c5_optimise_get ,c6_optimise_get ,c7_optimise_get ,c8_optimise_get ,c9_optimise_get ,c10_optimise_get,c11_optimise_get,
-                c12_optimise_get,c13_optimise_get,c14_optimise_get,c15_optimise_get,c16_optimise_get,c17_optimise_get,c18_optimise_get,c19_optimise_get,c20_optimise_get) 
- 
-
-                print('List Optimisation:')
-                print(c_optimise_setdata_list)
 
 
 #===================================================================================================================                 
                 def tab_4():  
+
                     self.main_frame_tab3.place_forget()     
 
                     self.main_frame_tab4 = Frame(self.mainwindow, 
@@ -841,37 +1058,52 @@ class app:
                     rely=0.5,
                     anchor=CENTER) 
 
-                    self.btnnext4 = Button(self.main_frame_tab4, text='Next', height=1, width=10)
+                    self.figure_chart_ranking_frame = LabelFrame(self.main_frame_tab4)
+                    self.figure_chart_ranking_frame.pack() 
+                    self.figure_chart_ranking_frame.place(
+                    relx=0.5,
+                    rely=0.45,
+                    #rely= 0.35,
+                    anchor=CENTER) 
+
+                    def add_value_labels(ax, spacing=5):   
+                        for rect in ax.patches: 
+                            y_value = rect.get_height()
+                            x_value = rect.get_x() + rect.get_width() / 2 
+                            space = spacing 
+                            va = 'bottom' 
+                            if y_value < 0:
+                                # Invert space to place label below
+                                space *= -1
+                                # Vertically align label at top
+                                va = 'top' 
+                            label = "{:}".format(y_value)
+                            # Create annotation
+                            ax.annotate(
+                                label,                      # Use `label` as label
+                                (x_value, y_value),         # Place label at end of the bar
+                                xytext=(0, space),
+                                fontsize=8,          # Vertically shift label by `space`
+                                textcoords="offset points", # Interpret `xytext` as offset in points
+                                ha='center',                # Horizontally center label
+                                va=va)                      # Vertically align label differently for
+                                                            # positive and negative values.
+
+                    self.btnnext4 = Button(self.main_frame_tab4, text='Print', height=1, width=10)
                     self.btnback4 = Button(self.main_frame_tab4, text='Back', height=1, width=10)
 
                     self.btnnext4.pack()            
                     self.btnnext4.place(relx=btnnextX,rely=btnnextY, anchor=CENTER)  
                     self.btnback4.pack()            
-                    self.btnback4.place(relx=btnnextX-0.05,rely=btnnextY, anchor=CENTER)                       
+                    self.btnback4.place(relx=btnnextX-0.05,rely=btnnextY, anchor=CENTER)      
 
                     if num_val_sublv2 == 0 :
                         print('no data for evaluation,')  
                     if num_val_sublv2 > 0 : 
-                        if Typeofevaluation_Var.get() == 1:                            
-                            print('')
-                            print('Type of Evaluation   : Quantitative')
-                            print('')
-                            print('TOPSIS and VIKOR module initatiated')
-                            print('')
-                            TOPSIS_RANK=TOPSIS(num_val_sublv2,weight_matrix_dm,matrix_array_optimisation_C)
-                            print("TOPSIS RANK  :",TOPSIS_RANK) 
-                            VIKOR_RANK=VIKOR(num_val_sublv2,weight_matrix_dm,matrix_array_optimisation_C)
-                            print("VIKOR RANK   :",VIKOR_RANK) 
-                            values1=TOPSIS_RANK
-                            values2=VIKOR_RANK
-                            print("")
-                            rho_value=rho(values1, values2)
-                            tau_value=tau(values1, values2)
-                            print("rho value  :",rho_value) 
-                            print("tau value  :",tau_value) 
+                        if Typeofevaluation_Var.get() == 1:                                                     
+                            print('no data for evaluation,')  
+ 
                         if Typeofevaluation_Var.get() > 1:  # == 2 :
-                            print('')
-                            print('Type of Evaluation   : Quantitative')
                             print('')
                             print('Fuzzy TOPSIS and Fuzzy VIKOR module initatiated:')
                             print('')
@@ -881,16 +1113,37 @@ class app:
                             print("FUZZY VIKOR RANK     :",FUZZY_VIKOR_RANK) 
                             values1=FUZZY_TOPSIS_RANK
                             values2=FUZZY_VIKOR_RANK
+                            for num1, num2 in zip(values1, values2):
+                                average_ranking.append((num1+num2)/2)    
+                            rankAVERAGE= [sorted(average_ranking,reverse=False).index(x)+1 for x in average_ranking]
+                            print("Average RANK   :",rankAVERAGE) 
                             print("")
                             rho_value=rho(values1, values2)
                             tau_value=tau(values1, values2)
                             print("rho value  :",rho_value) 
                             print("tau value  :",tau_value) 
+                            print("")
 
-                            #rankcoorelation_rhodataforchart=chartrankccorelation(values1, values2)
-                            #print(rankcoorelation_rhodataforchart)
+                            data_rank = {'Material': df_alternative,'Ranking Fuzzy TOPSIS':values1,'Ranking Fuzzy VIKOR':values2, 'Average ranking':rankAVERAGE}  
+                            data_rank=DataFrame(data_rank,columns=['Material','Ranking Fuzzy TOPSIS','Ranking Fuzzy VIKOR', 'Average ranking']) 
 
-                    # self.btnnext4.configure(command=tab_5)            
+                        figureranking =  plt.Figure(edgecolor="#04253a",figsize=(10,5), dpi=140,facecolor="#e5e5e5")                                 
+                        ax1 = figureranking.add_subplot(111)                            
+                        bar1 = FigureCanvasTkAgg(figureranking, self.figure_chart_ranking_frame)
+                        bar1.get_tk_widget().pack() 
+                        data_rank.plot(kind='bar', legend=True, ax=ax1,width=0.45,color=['slategrey', 'royalblue', 'black'])
+                        ax1.set_title('Material Ranking', fontsize=8,fontweight="bold", y=1.0, pad=15) 
+                        ax1.legend(fontsize=5)
+                        ax1.set_xlabel('Material',fontsize=6)
+                        ax1.set_ylabel('Ranking',fontsize=6)
+                        ax1.tick_params(axis='both', which='major', labelsize=6)
+                        print(data_rank)                            
+                        yLIMIT=len(df['Material'])
+                        ax1.set_ylim([0, yLIMIT+3])
+                        ax1.set_xticklabels(df_alternative, rotation=25, ha='right')                       
+                        add_value_labels(ax1) 
+
+                  # self.btnnext4.configure(command=tab_5)            
 
 #=================================================================================================================== 
                     def back_3(): 
@@ -906,69 +1159,25 @@ class app:
                     self.main_frame_tab3.place_forget()
                     tab_2() 
 #=================================================================================================================== 
-
                 self.main_frame_tab2.place_forget()
 
-                self.btnnext3 = Button(self.main_frame_tab3, text='Next', height=1, width=10)
-                self.btnback3 = Button(self.main_frame_tab3, text='Back', height=1, width=10)
+                if Typeofevaluation_Var.get() == 1:      
+                    self.btnnext3 = Button(self.main_frame_tab3, text='Print', height=1, width=10)
+                    self.btnnext3.pack()             
+                    #self.btnnext3.configure(command=tab_4)           
 
-                self.btnnext3.pack()            
+                if Typeofevaluation_Var.get() > 1:      
+                    self.btnnext3 = Button(self.main_frame_tab3, text='Next', height=1, width=10)
+                    self.btnnext3.pack()             
+                    self.btnnext3.configure(command=tab_4)            
+
                 self.btnnext3.place(relx=btnnextX,rely=btnnextY, anchor=CENTER)            
-                self.btnnext3.configure(command=tab_4)            
-
+                self.btnback3 = Button(self.main_frame_tab3, text='Back', height=1, width=10)
                 self.btnback3.pack()            
                 self.btnback3.place(relx=btnnextX-0.05,rely=btnnextY, anchor=CENTER)            
                 self.btnback3.configure(command=back_2)
 
-            location_x_tab2=0.03
-            location_y2_tab2=0.1
-
-            location_x2_tab2=0.15 # to delete
-            location_y2_tab2_gap=0.043 #
-
-            heightbox_tab2=700
-
-            self.main_frame_tab2 = Frame(self.mainwindow, 
-            height=height_of_window,
-            width=width_of_window)
-            self.main_frame_tab2.pack() 
-            self.main_frame_tab2.place(
-            relx=0.5,
-            rely=0.5,
-            anchor=CENTER) 
-
-            self.infodetail_frame = LabelFrame(self.main_frame_tab2, 
-            text=("Info"),
-            font=("Helvetica", 10, "italic"),
-            height=heightbox_tab2,
-            width=600)
-            self.infodetail_frame.pack() 
-            self.infodetail_frame.place(
-            relx=0.27,
-            rely=0.48,
-            anchor=CENTER) 
-
-            self.criteriaweighting_frame = LabelFrame(self.main_frame_tab2, 
-            text=("Criteria Weighting"),
-            font=("Helvetica", 10, "italic"),
-            height=heightbox_tab2,
-            width=530)
-            self.criteriaweighting_frame.pack() 
-            self.criteriaweighting_frame.place(
-            relx=0.577,
-            rely=0.48,
-            anchor=CENTER)            
-
-            self.criteria_optimization = LabelFrame(self.main_frame_tab2, 
-            text=("Criteria Optimization"),
-            font=("Helvetica", 10, "italic"),
-            height=heightbox_tab2,
-            width=300)
-            self.criteria_optimization.pack() 
-            self.criteria_optimization.place(
-            relx=0.807,
-            rely=0.48,
-            anchor=CENTER)   
+#===================================================================================================================
 
             self.btnnext2 = Button(self.main_frame_tab2, text='Next', height=1, width=10)
             self.btnback2 = Button(self.main_frame_tab2, text='Back', height=1, width=10)
@@ -981,103 +1190,6 @@ class app:
             self.btnback2.place(relx=btnnextX-0.05,rely=btnnextY, anchor=CENTER)            
             #self.btnback2.configure(command=back_1)
  
-            self.wdtitle1.place_forget()
-            self.btnnext1.place_forget()
-
-            self.nameofproject1=Label(self.infodetail_frame, text="Project name", font=("Helvetica", 10, 'bold'))
-
-            def handle_focus_in(_):
-                self.nameofproject2.delete(0, tk.END)
-                self.nameofproject2.config(fg='black') 
-
-            def handle_enter(txt):
-                print(self.nameofproject2.get())
-
-            self.nameofproject2=Entry(self.infodetail_frame,width=58,bd=1) 
-
-            self.nameofproject2.insert(0,"Enter Project name")
-
-            self.nameofproject2.bind("<FocusIn>", handle_focus_in) 
-            self.nameofproject2.bind("<Return>", handle_enter)
-
-            self.typeofproject1=Label(self.infodetail_frame, text="Type of project", font=("Helvetica", 10, 'bold' ))
-
-            Typeofproject_var=IntVar()
-            Typeofproject_var.set(3)
-            self.r1=Radiobutton(self.infodetail_frame, text="Performance", variable=Typeofproject_var,value=1, tristatevalue=0)
-            self.r2=Radiobutton(self.infodetail_frame, text="Cost", variable=Typeofproject_var,value=2, tristatevalue=0)
-            self.r3=Radiobutton(self.infodetail_frame, text="Customise", variable=Typeofproject_var,value=3, tristatevalue=0)
-
-            
-            self.dm_q1=Label(self.infodetail_frame, text="Decision makers", font=("Helvetica", 10, 'bold' ))
-            
-            self.dm_selection = ttk.Combobox(self.infodetail_frame, values=[1,2,3,4,5], width = 11, state='readonly')
-            self.dm_selection.set(1)
-
-            self.Typeofevaluation=Label(self.infodetail_frame, text="Type of evaluation", font=("Helvetica", 10, 'bold' ))
-            Typeofevaluation_Var=IntVar()
-            Typeofevaluation_Var.set(3)
-            self.r4=Radiobutton(self.infodetail_frame, text="Quantitative", variable=Typeofevaluation_Var,value=1, tristatevalue=0)
-            self.r5=Radiobutton(self.infodetail_frame, text="Qualitative", variable=Typeofevaluation_Var,value=2, tristatevalue=0)            
-            self.r6=Radiobutton(self.infodetail_frame, text="Combination", variable=Typeofevaluation_Var,value=3, tristatevalue=0)
-
-            self.criteria_label_listbox_info=Label(self.infodetail_frame, text="Criteria", font=("Helvetica", 10, 'bold' )) 
-
-            item_infodetail_xmove=0.053
-            item_infodetail_ymove=0.05
-            item_infodetail_xmove_gap=0.25
-            item_infodetail_ymove_gap=0.07
-
-
-            self.nameofproject1.pack()
-            self.nameofproject1.place(relx=item_infodetail_xmove,rely=item_infodetail_ymove, anchor=NW)
-
-            self.nameofproject2.pack()
-            self.nameofproject2.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*1.2,rely=item_infodetail_ymove, anchor=NW)
-
-            self.typeofproject1.pack()
-            self.typeofproject1.place(relx=item_infodetail_xmove,rely=item_infodetail_ymove+item_infodetail_ymove_gap*1, anchor=NW)
-             
-            self.r1.pack()
-            self.r2.pack()
-            self.r3.pack() 
-            self.r1.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*1.2,rely=item_infodetail_ymove+item_infodetail_ymove_gap*1, anchor=NW)
-            self.r2.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*2.1,rely=item_infodetail_ymove+item_infodetail_ymove_gap*1, anchor=NW)
-            self.r3.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*2.8,rely=item_infodetail_ymove+item_infodetail_ymove_gap*1, anchor=NW)
-            
-            self.dm_q1.pack()
-            self.dm_q1.place(relx=item_infodetail_xmove,rely=item_infodetail_ymove+item_infodetail_ymove_gap*2, anchor=NW)
-
-            self.dm_selection.pack()
-            self.dm_selection.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*1.2,rely=item_infodetail_ymove+item_infodetail_ymove_gap*2, anchor=NW)
-            self.dm_selection.current()
-
-            self.Typeofevaluation.pack()
-            self.Typeofevaluation.place(relx=item_infodetail_xmove,rely=item_infodetail_ymove+item_infodetail_ymove_gap*3, anchor=NW)
-
-            self.r4.pack()
-            self.r5.pack()
-            self.r6.pack()
-            self.r4.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*1.2,rely=item_infodetail_ymove+item_infodetail_ymove_gap*3, anchor=NW)
-            self.r5.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*2.1,rely=item_infodetail_ymove+item_infodetail_ymove_gap*3, anchor=NW)
-            self.r6.place(relx=item_infodetail_xmove+item_infodetail_xmove_gap*2.8,rely=item_infodetail_ymove+item_infodetail_ymove_gap*3, anchor=NW)
-
-            self.criteria_label_listbox_info.pack()
-            self.criteria_label_listbox_info.place(relx=item_infodetail_xmove,rely=item_infodetail_ymove+item_infodetail_ymove_gap*4, anchor=NW)
-
-            height_listbox=19
-            self.C_Listbox=Listbox(self.infodetail_frame,height=height_listbox , width = 28, selectmode=MULTIPLE,exportselection=False)
-            self.C_Listbox.insert(1,'Physical Properties')
-            self.C_Listbox.insert(2,'Mechanical Properties')
-            self.C_Listbox.insert(3,'Chemical Properties')
-            self.C_Listbox.insert(4,'Manufacturing Processes')
-            self.C_Listbox.insert(5,'Operating Condition')
-            self.C_Listbox.insert(6,'Recyclability')
-            self.C_Listbox.insert(7,'Cost')                  
-            self.C_Listbox.insert(10,'Quality')
-            self.C_Listbox.insert(11,'SHE Risk')
-            self.C_Listbox.pack()      
-
             def CurSelet(evt):
                            
                 values_SubCriteria_level_1 = [self.C_Listbox.get(idx) for idx in self.C_Listbox.curselection()]
@@ -1193,7 +1305,7 @@ class app:
                 for sublist in list_all:
                     for item in sublist:
                         flat_list_SubCriteria_level_1.append(item) 
-#=================================================================================================================== 
+ 
             self.C_Listbox.bind('<<ListboxSelect>>',CurSelet)
             self.C_Listbox.place(relx=0.22,rely=0.35,anchor=NW)     
              
@@ -1212,16 +1324,13 @@ class app:
             gapboxdm_fromtop=label_criteria_tab2_y
             gap_y_dmweight=label_criteria_tab2_y_gap
 
-
             sizefont=10
 
-#=================================================================================================================== 
             criteria_dm_9_point=[0,1,2,3,4,5,6,7,8,9,10]
             criteria_dm__point=criteria_dm_9_point
-#=================================================================================================================== 
+ 
             input_dm_combobox_definitioncriteriaweighting_frame=self.criteriaweighting_frame
             input_dm_combobox_definition_criteria_dm__point=criteria_dm__point
-
     
             dm1_c1 = ttk.Combobox(self.criteriaweighting_frame,values=criteria_dm__point, width = 4) 
             #else:                
@@ -1329,7 +1438,6 @@ class app:
 
             Typeofevaluation_Var_input=Typeofevaluation_Var.get()
 
-
             dm_initial_set(Typeofevaluation_Var_input,
             dm1_c1,dm1_c2 ,dm1_c3 ,dm1_c4 ,dm1_c5 ,dm1_c6 ,dm1_c7 ,dm1_c8 ,dm1_c9 ,dm1_c10,dm1_c11,dm1_c12,dm1_c13,dm1_c14,dm1_c15,dm1_c16,dm1_c17,dm1_c18,dm1_c19,dm1_c20,  
             dm2_c1,dm2_c2 ,dm2_c3 ,dm2_c4 ,dm2_c5 ,dm2_c6 ,dm2_c7 ,dm2_c8 ,dm2_c9 ,dm2_c10,dm2_c11,dm2_c12,dm2_c13,dm2_c14,dm2_c15,dm2_c16,dm2_c17,dm2_c18,dm2_c19,dm2_c20,  
@@ -1337,9 +1445,7 @@ class app:
             dm4_c1,dm4_c2 ,dm4_c3 ,dm4_c4 ,dm4_c5 ,dm4_c6 ,dm4_c7 ,dm4_c8 ,dm4_c9 ,dm4_c10,dm4_c11,dm4_c12,dm4_c13,dm4_c14,dm4_c15,dm4_c16,dm4_c17,dm4_c18,dm4_c19,dm4_c20,  
             dm5_c1,dm5_c2 ,dm5_c3 ,dm5_c4 ,dm5_c5 ,dm5_c6 ,dm5_c7 ,dm5_c8 ,dm5_c9 ,dm5_c10,dm5_c11,dm5_c12,dm5_c13,dm5_c14,dm5_c15,dm5_c16,dm5_c17,dm5_c18,dm5_c19,dm5_c20)    
 
-#=================================================================================================================== 
             criteria_optimise_list=['Max','Min'] 
-#=================================================================================================================== 
 
             c1_optimise   = ttk.Combobox(self.criteria_optimization,values=criteria_optimise_list, width = 6)
             c2_optimise   = ttk.Combobox(self.criteria_optimization,values=criteria_optimise_list, width = 6)
@@ -1408,7 +1514,7 @@ class app:
             self.label_subcriteria_18_level_2_optimise    =Label(self.criteria_optimization)
             self.label_subcriteria_19_level_2_optimise    =Label(self.criteria_optimization)
             self.label_subcriteria_20_level_2_optimise    =Label(self.criteria_optimization)
-#===================================================================================================================        
+
             def forget_place_item_DM_Criteria():
 
                 self.label_subcriteria_0_level_2.place_forget()
@@ -1484,7 +1590,6 @@ class app:
                     rely=label_criteria_tab2_y+label_criteria_tab2_y_gap*0,
                     anchor=NW)
 
-
                     self.label_subcriteria_0_level_2_optimise    =   Label(self.criteria_optimization, 
                     text=self.values_SubCriteria_level_2[0]  , font=("Helvetica",sizefont,"bold") )
                     self.label_subcriteria_0_level_2_optimise .pack()
@@ -1550,7 +1655,6 @@ class app:
                     relx=label_criteria_tab2_x+0.01,
                     rely=label_criteria_tab2_y+label_criteria_tab2_y_gap*2,
                     anchor=NW)
-
 
                     c3_optimise.pack()
                     c3_optimise .place(
@@ -1662,7 +1766,6 @@ class app:
                     relx=label_criteria_tab2_x+0.01,
                     rely=label_criteria_tab2_y+label_criteria_tab2_y_gap*6,
                     anchor=NW)
-
 
                     c7_optimise.pack()
                     c7_optimise .place(
@@ -2276,7 +2379,6 @@ class app:
 
             global num_val_sublv2
             num_val_sublv2=StringVar()
-#=================================================================================================================== 
 
             self.btnclear_dmweighting = Button(self.criteriaweighting_frame, text='<<', height=1, width=3)
             self.btnnext_dmweighting = Button(self.infodetail_frame, text='>>', height=1, width=3)
@@ -2289,12 +2391,10 @@ class app:
 
             self.btnclear_dmweighting.configure(command=forget_place_item_DM_Criteria)
             self.btnnext_dmweighting.configure(command=populate_dm_weighting_frame)
-        
+
+#===================================================================================================================         
         self.btnnext1.configure(command=tab_2) 
-
-
-#=================================================================================================================== 
-          
+#===================================================================================================================           
 mainwindow = Tk()
 application = app(mainwindow)
 mainwindow.mainloop()  

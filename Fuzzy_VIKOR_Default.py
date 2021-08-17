@@ -5,6 +5,11 @@ import pandas as pd
 import warnings
 import copy
 
+from pandas import DataFrame 
+import matplotlib.pyplot as plt                                             #   Plot Chart
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg             #   Plot Chart
+
+
 warnings.filterwarnings('error') 
 strategy_coefficient=0.5
 #def fuzzyTOPSIS_fuzzydm(num_val_sublv2,weight_matrix_dm,matrix_array_optimisation_C):
@@ -879,3 +884,7 @@ except RuntimeWarning:
     print("")
     print("Fuzzy VIKOR evaluation cannot proceed")
     print("")
+
+
+
+ 
